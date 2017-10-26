@@ -1,13 +1,11 @@
 const path = require('path')
 
-const XXX_cont = require('./../controllers/XXX_cont')
-// const user_cont = require('./../controllers/XXX2_cont')
+const poll_cont = require('./../controllers/poll_cont')
 
 module.exports = app => {
-    app.post('/XXX', XXX_cont.newXXX)
+    app.post('/poll', poll_cont.newPoll)
 
-    // // Use for Angular app
-    // app.all("*", (req,res,next) => {
-    //     res.sendFile(path.resolve("./static/dist/index.html"))
-    // });
+    app.all("*", (req,res,next) => {
+        res.sendFile(path.resolve("./static/dist/index.html"))
+    });
 }
