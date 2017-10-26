@@ -41,3 +41,41 @@ input.question{
 input.option{
     width: 20em;
 }
+
+table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table td, table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: green;
+    color: white;
+}
+
+button, input[type=submit] {
+    border: 2px solid black;
+    box-shadow: 2px 2px black;
+    background-color: white;
+    padding: 1em;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bolder;
+}
+
+button:active, input[type=submit]:active{
+    color: green;
+}
+
+button:hover, input[type=submit]:hover{
+    box-shadow: 5px 5px black;
+}

@@ -1,3 +1,28 @@
-<p>
-  poll-use works!
-</p>
+<div class="nav">
+  <a routerLink="/dashboard">Give Up and Go Home</a>
+</div>
+<div class="head" *ngIf="poll">
+  <h2>The question is: {{ poll.question }}</h2>
+  <p>Click the vote button to cast your vote!</p>
+</div>
+<div class="head" *ngIf="poll">
+  <h2>Please wait, poll is loading...</h2>
+</div>
+<table *ngIf="poll">
+  <thead>
+    <th>Option</th>
+    <th>Votes</th>
+    <th>Cast Vote</th>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let option of poll.options">
+      <tr *ngIf="option">
+        <td>{{ option.name }}</td>
+        <td>{{ option.count }}</td>
+        <td>
+          <button (click)="processVote(option._id)">Pick Me!</button>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

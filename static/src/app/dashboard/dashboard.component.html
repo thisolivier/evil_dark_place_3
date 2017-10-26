@@ -13,7 +13,7 @@
     <tr *ngFor="let poll of polls">
       <td>{{ poll.creator }}</td>
       <td><a routerLink='/poll/{{poll._id}}'>{{ poll.question }}</a></td>
-      <td>{{ poll.createdAt | date:'shortDate' }}</td>
+      <td>{{ poll.createdAt | date:'longDate' }}</td>
       <td>
         <a (click)="processDelete(poll._id)" *ngIf="poll.creator == currUser">
           Delete

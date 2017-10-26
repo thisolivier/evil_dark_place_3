@@ -8,7 +8,7 @@ import { PollMakeComponent } from './poll-make/poll-make.component'
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'poll/:number', component: PollUseComponent},
+  { path: 'poll/:id', component: PollUseComponent},
   { path: 'create', component: PollMakeComponent}
 ];
 

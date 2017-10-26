@@ -27,8 +27,45 @@ module.exports = {
             }
         })
     },
-    getOne: () => {},
-    updateOne: () => {},
+    getOne: (req, res) => {
+        console.log('Attempting to get one poll', req.params.id)
+        Poll.findById(req.params.id, (err, poll) => {
+            if (err) { 
+                console.log("We couldn't find that poll", err) 
+                res.status(400).json(err)
+            } else {
+                console.log("Got your poll :)")
+                res.status(200).json(poll)
+            }
+        })
+    },
+    castVote: (req, res) => {
+        console.log('Casting vote on poll', req.params.id, req.body.option)
+        const pollId = req.params.id
+        const optId = req.body.option
+        Poll.findById(pollId, (err, poll) => {
+            if (err) { 
+                console.log("We couldn't find that poll", err) 
+                res.status(400).json(err)
+            } else {
+                for (var idx = 0; idx < poll.options.length; idx += 1){
+                    if (poll.options[idx] && (poll.options[idx]._id == optId)){
+                        console.log("Option found", idx)
+                        poll.options[idx].count = poll.options[idx].count + 1
+                        poll.save( err => {
+                            if (err) { 
+                                console.log("We save your poll after voting", err) 
+                                res.status(400).json(err)
+                            } else {
+                                console.log("Your vote is saved :)")
+                                res.status(200).json("All OK!")
+                            }
+                        })
+                    }
+                }
+            }
+        })
+    },
     delete: (req, res) => {
         console.log('Deleting a poll', req.params.id)
         const user = req.body.user
@@ -37,7 +74,7 @@ module.exports = {
             if (err) { 
                 console.log("We couldn't find that poll", err) 
                 res.status(400).json(err)
-            }
+            } 
             else if (poll.creator == user) {
                 console.log("User is good:", user)
                 poll.remove((err)=>{
