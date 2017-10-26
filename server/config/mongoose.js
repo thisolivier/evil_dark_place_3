@@ -4,7 +4,7 @@ const path = require('path')
 const models_path = path.join(__dirname, './../models')
 
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/bikes', {useMongoClient: true})
+mongoose.connect('mongodb://localhost/exam-3', {useMongoClient: true})
 
 
 // All JS files in the models directory should be required into this file

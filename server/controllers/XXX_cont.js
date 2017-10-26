@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const YYY = mongoose.model("YYY")
+const YYY = mongoose.model("XXX")
 
 module.exports = {
     newXXX: (req, res) => {
