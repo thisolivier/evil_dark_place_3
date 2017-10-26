@@ -1,3 +1,24 @@
-<p>
-  dashboard works!
-</p>
+<div class="nav">
+  <a href="" routerLink="/create">Create a New Poll</a>
+  <a href="" (click)="processLogout()">Run Away</a>
+</div>
+<table>
+  <thead>
+    <th>Created By</th>
+    <th>Survey Question</th>
+    <th>Date Added</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let poll of polls">
+      <td>{{ poll.creator }}</td>
+      <td><a routerLink='/poll/{{poll._id}}'>{{ poll.question }}</a></td>
+      <td>{{ poll.createdAt | date:'shortDate' }}</td>
+      <td>
+        <a (click)="processDelete(poll._id)" *ngIf="poll.creator == currUser">
+          Delete
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>

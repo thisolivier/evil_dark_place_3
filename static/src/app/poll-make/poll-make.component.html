@@ -1,3 +1,27 @@
-<p>
-  poll-make works!
-</p>
+<div class="nav">
+  <a href="" routerLink="/dashboard">Give Up and Go Home</a>
+</div>
+<h2>Make a new poll!</h2>
+<form #formCont="ngForm" class="newPollForm">
+  <label>
+    Question 
+    <input 
+      class="question" 
+      name="question" 
+      [(ngModel)]="question" 
+      required
+      minlength="8"  
+      >
+  </label>
+  <label *ngFor="let num of [1,2,3,4]">
+    Option {{num}} 
+    <input 
+      class="option" 
+      [name]="'option' + num" 
+      [(ngModel)]="option[num]" 
+      required
+      minlength="3"
+      >
+  </label>
+  <input type="submit" value="Do It!" (click)="processPoll()" [disabled]="!formCont.valid">
+</form>
