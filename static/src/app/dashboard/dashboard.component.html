@@ -2,6 +2,10 @@
   <a href="" routerLink="/create">Create a New Poll</a>
   <a href="" (click)="processLogout()">Run Away</a>
 </div>
+<form>
+  <label>Search: <input type="text" name="search" [(ngModel)]="searchField"></label>
+</form>
+<br><br>
 <table>
   <thead>
     <th>Created By</th>
@@ -10,7 +14,7 @@
     <th>Action</th>
   </thead>
   <tbody>
-    <tr *ngFor="let poll of polls">
+    <tr *ngFor="let poll of polls | search: searchField">
       <td>{{ poll.creator }}</td>
       <td><a routerLink='/poll/{{poll._id}}'>{{ poll.question }}</a></td>
       <td>{{ poll.createdAt | date:'longDate' }}</td>
@@ -22,3 +26,5 @@
     </tr>
   </tbody>
 </table>
+
+{{ search | json }}

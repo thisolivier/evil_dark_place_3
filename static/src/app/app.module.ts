@@ -12,6 +12,7 @@ import { PollMakeComponent } from './poll-make/poll-make.component'
 
 import { LoginService } from './login.service'
 import { PollsService } from './polls.service'
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PollsService } from './polls.service'
     LoginComponent,
     DashboardComponent,
     PollUseComponent,
-    PollMakeComponent
+    PollMakeComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
